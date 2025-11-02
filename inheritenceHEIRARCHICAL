@@ -1,0 +1,80 @@
+
+#include<iostream>
+using namespace std;
+class employee
+{
+    protected:
+    string n;
+    int b,da,ta,hra,tot;
+    public:
+    void in()
+    {
+        cout<<"ENTER THE NAME OF THE RESPECTIVE EMPLOYEE\n";
+        cin>>n;
+        cout<<"BASIC SALARY\n";
+        cin>>b;
+    }
+    void out()
+    {
+        cout<<n<<" "<<b;
+    }
+    void calculate()
+    {
+       da=0.2*b;
+        ta=0.3*b;
+        hra=0.4*b;
+    }
+};
+class employeedoc:public employee
+{
+protected:
+int pma,oa;
+public:
+void update()
+{
+    employee::in();
+    employee::calculate();
+     tot=da+ta+hra+b;
+    if(tot<10000)
+    {
+        int pma=tot*0.1;
+        tot+=pma;
+        int oa=tot*0.05;
+        tot=tot+oa;
+    }
+    employee::out();
+    cout<<da <<ta <<b <<hra <<endl;
+    cout<<n<<endl;
+}
+};
+class employeeeng:public employee
+{
+protected:
+int ga,uta;
+public:
+void update()
+{
+    employee::in();
+    employee::calculate();
+     tot=da+ta+hra+b;
+    if(tot<10000)
+    {
+        int ga=tot*0.1;
+        tot+=ga;
+        int uta=tot*0.05;
+        tot=tot+uta;
+    }
+    employee::out();
+    cout<<da <<ta <<b <<hra <<endl;
+    cout<<n<<endl;
+}
+};
+int main()
+{
+    employeedoc emp1;
+    employeeeng emp2;
+    emp1.update();
+    emp2.update();
+    return 0;
+}
+
